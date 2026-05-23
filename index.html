@@ -14,7 +14,6 @@
     --orange: #FF9500;
     --green: #34C759;
     --blue: #0A84FF;
-    --purple: #BF5AF2;
     --yellow: #FFD60A;
     --text: #e8eaf0;
     --text2: #8b8fa8;
@@ -31,10 +30,11 @@
     min-height: 100vh;
   }
 
+  /* ===== Header ===== */
   .header {
     background: linear-gradient(135deg, #1a0a10 0%, #1a1020 40%, #0d1020 100%);
     border-bottom: 1px solid var(--border);
-    padding: 18px 24px 14px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,26 +45,53 @@
   .header-left { display: flex; align-items: center; gap: 12px; }
   .header-badge {
     background: linear-gradient(135deg, #FF2D55, #FF6B35);
-    color: white;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 4px 12px;
-    border-radius: 6px;
-    letter-spacing: 1px;
+    color: white; font-weight: 700; font-size: 15px;
+    padding: 4px 12px; border-radius: 6px; letter-spacing: 1px;
   }
-  .header-title { font-size: 16px; font-weight: 600; color: var(--text); }
-  .header-sub { font-size: 12px; color: var(--text2); margin-top: 2px; }
+  .header-title { font-size: 15px; font-weight: 600; }
+  .header-sub { font-size: 11px; color: var(--text2); margin-top: 1px; }
+  .header-right { display: flex; align-items: center; gap: 10px; }
+  .time-progress-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 12px; min-width: 200px;
+  }
+  .time-progress-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 4px; font-size: 11px;
+  }
+  .time-label { color: var(--text2); }
+  .time-pct { color: var(--yellow); font-weight: 700; }
+  .time-bar {
+    height: 5px; background: var(--border); border-radius: 3px; overflow: hidden;
+  }
+  .time-fill {
+    height: 100%; background: var(--yellow); border-radius: 3px;
+  }
   .update-time {
     font-size: 11px; color: var(--text3);
     background: var(--surface); padding: 4px 10px;
     border-radius: 20px; border: 1px solid var(--border);
   }
 
-  .main { padding: 20px 24px; max-width: 1600px; margin: 0 auto; }
+  /* ===== Layout ===== */
+  .main { padding: 18px 24px; max-width: 1600px; margin: 0 auto; }
+
+  .tabs {
+    display: flex; gap: 4px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 4px; margin-bottom: 18px; width: fit-content;
+  }
+  .tab {
+    padding: 6px 20px; border-radius: 7px; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text2);
+    transition: all 0.2s; user-select: none;
+  }
+  .tab.active { background: var(--accent); color: white; }
+  .tab:hover:not(.active) { background: var(--surface2); color: var(--text); }
 
   .section-title {
     font-size: 14px; font-weight: 700; color: var(--text);
-    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
   }
   .section-title::before {
     content: ''; display: block; width: 3px; height: 16px;
@@ -76,26 +103,14 @@
     padding: 2px 8px; border-radius: 10px; border: 1px solid rgba(255,45,85,0.3);
   }
 
-  .tabs {
-    display: flex; gap: 4px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 4px; margin-bottom: 20px; width: fit-content;
-  }
-  .tab {
-    padding: 7px 20px; border-radius: 7px; cursor: pointer;
-    font-size: 13px; font-weight: 600; color: var(--text2);
-    transition: all 0.2s; user-select: none;
-  }
-  .tab.active { background: var(--accent); color: white; }
-  .tab:hover:not(.active) { background: var(--surface2); color: var(--text); }
-
+  /* ===== Dept3 Cards ===== */
   .dept3-grid {
     display: grid; grid-template-columns: repeat(5, 1fr);
-    gap: 12px; margin-bottom: 24px;
+    gap: 10px; margin-bottom: 18px;
   }
   .tier-card {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 14px 16px;
+    border-radius: 12px; padding: 13px 14px;
     position: relative; overflow: hidden;
   }
   .tier-card::before {
@@ -108,81 +123,125 @@
   .tier-card.t3::before { background: var(--orange); }
   .tier-card.t4::before { background: var(--red); }
 
-  .tier-label { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 4px; }
-  .tier-sublabel { font-size: 10px; color: var(--text3); margin-bottom: 6px; font-style: italic; }
-  .tier-type-label { font-size: 10px; color: var(--text3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
-  .tier-nums { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
-  .tier-actual { font-size: 24px; font-weight: 700; color: var(--text); }
-  .tier-target { font-size: 13px; color: var(--text3); }
-  .tier-rate {
-    font-size: 11px; font-weight: 600;
-    padding: 2px 7px; border-radius: 10px;
+  .tier-label { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 6px; }
+  .tier-nums { display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px; }
+  .tier-actual { font-size: 22px; font-weight: 700; color: var(--text); }
+  .tier-target { font-size: 12px; color: var(--text3); }
+
+  /* 完成率 + 时间进度对比行 */
+  .tier-rate-row {
+    display: flex; align-items: center; gap: 6px; margin-bottom: 8px; flex-wrap: wrap;
   }
-  .rate-high { background: rgba(52,199,89,0.15); color: var(--green); }
-  .rate-mid  { background: rgba(255,149,0,0.15); color: var(--orange); }
-  .rate-low  { background: rgba(255,45,85,0.12); color: var(--red); }
-  .rate-zero { background: rgba(90,95,117,0.3);  color: var(--text3); }
+  .rate-badge {
+    font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 8px;
+  }
+  .vs-badge {
+    font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 6px;
+    display: flex; align-items: center; gap: 3px;
+  }
+  .vs-ahead  { background: rgba(52,199,89,0.15);  color: var(--green);  border: 1px solid rgba(52,199,89,0.3); }
+  .vs-behind { background: rgba(255,45,85,0.12);  color: var(--red);    border: 1px solid rgba(255,45,85,0.25); }
+  .vs-on     { background: rgba(255,213,10,0.12); color: var(--yellow); border: 1px solid rgba(255,213,10,0.3); }
 
-  .progress-wrap { margin-top: 8px; }
-  .progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-  .progress-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
-  .t0 .progress-fill { background: var(--blue); }
-  .t1 .progress-fill { background: var(--green); }
-  .t2 .progress-fill { background: var(--yellow); }
-  .t3 .progress-fill { background: var(--orange); }
-  .t4 .progress-fill { background: var(--red); }
+  /* Gap */
+  .tier-gap-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .gap-label { font-size: 10px; color: var(--text3); }
+  .gap-value { font-size: 11px; font-weight: 700; }
+  .gap-pos { color: var(--green); }
+  .gap-neg { color: var(--red); }
 
+  /* 双轨进度条 */
+  .dual-bar-wrap { margin-top: 2px; position: relative; height: 10px; }
+  .dual-bar-bg { position: absolute; top: 3px; left: 0; right: 0; height: 4px; background: var(--border); border-radius: 2px; }
+  .dual-bar-actual { position: absolute; top: 3px; left: 0; height: 4px; border-radius: 2px; }
+  .dual-bar-time {
+    position: absolute; top: 0; width: 2px; height: 10px;
+    background: var(--yellow); border-radius: 1px; transform: translateX(-1px);
+  }
+  .t0 .dual-bar-actual { background: var(--blue); }
+  .t1 .dual-bar-actual { background: var(--green); }
+  .t2 .dual-bar-actual { background: var(--yellow); }
+  .t3 .dual-bar-actual { background: var(--orange); }
+  .t4 .dual-bar-actual { background: var(--red); }
+
+  /* ===== Industry Cards ===== */
   .industry-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 12px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 10px;
   }
   .industry-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
   }
   .industry-card-header {
-    background: var(--surface2); padding: 10px 14px;
+    background: var(--surface2); padding: 9px 14px;
     display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--border);
   }
-  .industry-name { font-size: 13px; font-weight: 700; color: var(--text); }
-  .industry-total { font-size: 11px; color: var(--text3); }
+  .industry-name { font-size: 13px; font-weight: 700; }
+  .industry-summary { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+  .industry-total { color: var(--text3); }
 
+  /* 行表头 */
+  .tier-row-header {
+    display: grid;
+    grid-template-columns: 72px 1fr 50px 50px 62px 90px 70px;
+    gap: 4px; padding: 5px 14px; border-bottom: 1px solid var(--border);
+  }
+  .tier-row-header span { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+
+  /* 数据行 */
   .tier-row {
-    display: grid; grid-template-columns: 80px 1fr 60px 60px 70px;
-    gap: 6px; padding: 7px 14px;
-    border-bottom: 1px solid rgba(46,51,71,0.5); align-items: center;
+    display: grid;
+    grid-template-columns: 72px 1fr 50px 50px 62px 90px 70px;
+    gap: 4px; padding: 7px 14px;
+    border-bottom: 1px solid rgba(46,51,71,0.4); align-items: center;
   }
   .tier-row:last-child { border-bottom: none; }
-  .tier-row-header {
-    display: grid; grid-template-columns: 80px 1fr 60px 60px 70px;
-    gap: 6px; padding: 5px 14px; border-bottom: 1px solid var(--border);
-  }
-  .tier-row-header span { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; }
-  .col-tier { font-size: 12px; color: var(--text2); font-weight: 500; }
+
+  .col-tier { font-size: 11px; color: var(--text2); font-weight: 500; }
+  .col-bar { }
   .col-target { font-size: 12px; color: var(--text3); text-align: right; }
-  .col-actual { font-size: 13px; font-weight: 700; color: var(--text); text-align: right; }
+  .col-actual { font-size: 13px; font-weight: 700; text-align: right; }
   .col-rate { text-align: right; }
-  .mini-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .col-vs { text-align: center; }
+  .col-gap { font-size: 11px; font-weight: 700; text-align: right; }
+
+  .mini-bar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; position: relative; }
   .mini-fill { height: 100%; border-radius: 3px; }
-  .rate-pill { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 8px; display: inline-block; }
+  .mini-time-line {
+    position: absolute; top: -1px; width: 1.5px; height: 7px;
+    background: rgba(255,213,10,0.8); border-radius: 1px;
+  }
+
+  .rate-pill { font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 6px; display: inline-block; }
+  .rate-high  { background: rgba(52,199,89,0.15);  color: var(--green); }
+  .rate-mid   { background: rgba(255,149,0,0.15);  color: var(--orange); }
+  .rate-low   { background: rgba(255,45,85,0.12);  color: var(--red); }
+  .rate-zero  { background: rgba(90,95,117,0.3);   color: var(--text3); }
+  .rate-over  { background: rgba(52,199,89,0.25);  color: #00e676; }
+
+  .vs-row-ahead  { font-size: 10px; color: var(--green);  font-weight: 600; }
+  .vs-row-behind { font-size: 10px; color: var(--red);    font-weight: 600; }
+  .vs-row-on     { font-size: 10px; color: var(--yellow); font-weight: 600; }
+  .vs-row-zero   { font-size: 10px; color: var(--text3); }
 
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
   .note-bar {
-    background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.2);
-    border-radius: 8px; padding: 8px 14px; font-size: 11px; color: var(--text2);
-    margin-bottom: 18px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
+    background: rgba(10,132,255,0.07); border: 1px solid rgba(10,132,255,0.18);
+    border-radius: 8px; padding: 7px 12px; font-size: 11px; color: var(--text2);
+    margin-bottom: 16px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
   }
-  .note-icon { color: var(--blue); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .note-icon { color: var(--blue); font-size: 13px; flex-shrink: 0; }
 
   @media (max-width: 900px) {
     .dept3-grid { grid-template-columns: repeat(3, 1fr); }
     .industry-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
-    .dept3-grid { grid-template-columns: repeat(2, 1fr); }
-    .main { padding: 14px; }
   }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -196,10 +255,19 @@
     <div class="header-badge">66大促</div>
     <div>
       <div class="header-title">行业三部 · 店播 &amp; K播 监控看板</div>
-      <div class="header-sub">精分目标场次追踪 · 统计5月22日起</div>
+      <div class="header-sub">精分目标场次追踪 · 5月22日 ～ 6月18日（28天）</div>
     </div>
   </div>
-  <div class="update-time">⏱ 数据截止 2026-05-23</div>
+  <div class="header-right">
+    <div class="time-progress-wrap">
+      <div class="time-progress-row">
+        <span class="time-label" id="time-label">时间进度</span>
+        <span class="time-pct" id="time-pct-text">—</span>
+      </div>
+      <div class="time-bar"><div class="time-fill" id="time-fill" style="width:0%"></div></div>
+    </div>
+    <div class="update-time" id="update-time-el">⏱ 加载中...</div>
+  </div>
 </div>
 
 <div class="main">
@@ -210,11 +278,11 @@
 
   <!-- 店播 -->
   <div class="tab-panel active" id="panel-dbo">
-    <div class="section-title">行业三部汇总 <span class="section-badge">精分目标完成率</span></div>
+    <div class="section-title">行业三部汇总 <span class="section-badge">精分目标完成率 vs 时间进度</span></div>
     <div class="dept3-grid" id="dept3-dbo"></div>
     <div class="note-bar">
       <span class="note-icon">ℹ</span>
-      <span>汇总目标按GMV区间归层：<b>5k-3w</b>（5k-1w / 1w-3w）、<b>3w-10w</b>（3-5w / 5-10w / 3w-5w / 3w-10w）、<b>10w-50w</b>（10-30w / 10-50w / 10w+ / 10w-30w / 10w-50w / 15-50w / 30-50w / 30w+）、<b>50w-100w</b>（50-100w / 50w+ / 50w-100w）、<b>100w+</b>。完成数据：5月22日后每场按DGMV归层统计。</span>
+      <span>汇总目标按GMV区间归层：<b>5k-3w</b>（5k-1w/1w-3w）· <b>3w-10w</b>（3-5w/5-10w/3w-5w/3w-10w）· <b>10w-50w</b>（10-30w/10-50w/10w+/10w-30w/10w-50w/15-50w/30-50w/30w+）· <b>50w-100w</b>（50-100w/50w+/50w-100w）· <b>100w+</b>。<b>黄线</b>为时间进度基准，Gap = 实际完成 - 按时间进度应完成数。</span>
     </div>
     <div class="section-title">各行业详情</div>
     <div class="industry-grid" id="industry-dbo"></div>
@@ -222,11 +290,11 @@
 
   <!-- K播 -->
   <div class="tab-panel" id="panel-kbo">
-    <div class="section-title">行业三部汇总 <span class="section-badge">精分目标完成率</span></div>
+    <div class="section-title">行业三部汇总 <span class="section-badge">精分目标完成率 vs 时间进度</span></div>
     <div class="dept3-grid" id="dept3-kbo"></div>
     <div class="note-bar">
       <span class="note-icon">ℹ</span>
-      <span>K播汇总目标按层次归入：<b>5k-5w</b>（5K+ / 1w+）、<b>5w-10w</b>（5W+）、<b>10w-50w</b>（10W+ / 30W+ / 10-50W）、<b>50w-100w</b>（50W+ / 50-100W）、<b>100w+</b>。完成数据：5月22日后每场按DGMV归层，K播各行分层为累积计数。</span>
+      <span>K播汇总目标归层：<b>5k-5w</b>（5K+/1w+）· <b>5w-10w</b>（5W+）· <b>10w-50w</b>（10W+/30W+/10-50W）· <b>50w-100w</b>（50W+/50-100W）· <b>100w+</b>。<b>黄线</b>为时间进度基准，Gap = 实际完成 - 按时间进度应完成数。</span>
     </div>
     <div class="section-title">各行业详情</div>
     <div class="industry-grid" id="industry-kbo"></div>
@@ -236,76 +304,159 @@
 <script>
 const DATA = {"dept3_summary": {"kbo": {"tiers": ["5k-5w", "5w-10w", "10w-50w", "50w-100w", "100w+"], "tier_labels": ["5k～5万", "5万～10万", "10万～50万", "50万～100万", "100万+"], "target": {"5k-5w": 2600.0, "5w-10w": 690.0, "10w-50w": 924.0, "50w-100w": 173.0, "100w+": 187.0}, "actual": {"5k-5w": 529, "5w-10w": 44, "10w-50w": 50, "50w-100w": 4, "100w+": 7}}, "dbo": {"tiers": ["5k-3w", "3w-10w", "10w-50w", "50w-100w", "100w+"], "tier_labels": ["5k～3万", "3万～10万", "10万～50万", "50万～100万", "100万+"], "target": {"5k-3w": 593.0, "3w-10w": 5293.0, "10w-50w": 3326.3953488372094, "50w-100w": 353.0, "100w+": 194.0}, "actual": {"5k-3w": 1797, "3w-10w": 305, "10w-50w": 93, "50w-100w": 8, "100w+": 6}}}, "dbo": [{"industry": "文玩玉翠", "tier": "15-50w", "target": 1645, "actual": 32, "rate": 1.9}, {"industry": "文玩玉翠", "tier": "50-100w", "target": 169, "actual": 5, "rate": 3.0}, {"industry": "文玩玉翠", "tier": "100w+", "target": 69, "actual": 3, "rate": 4.3}, {"industry": "生鲜", "tier": "3-5w", "target": 149, "actual": 7, "rate": 4.7}, {"industry": "生鲜", "tier": "5-10w", "target": 106, "actual": 1, "rate": 0.9}, {"industry": "生鲜", "tier": "10-30w", "target": 65, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "5-10w", "target": 389, "actual": 10, "rate": 2.6}, {"industry": "潮玩", "tier": "10-50w", "target": 238, "actual": 9, "rate": 3.8}, {"industry": "潮玩", "tier": "50-100w", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "100w+", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "手工", "tier": "5-10w", "target": 320, "actual": 9, "rate": 2.8}, {"industry": "手工", "tier": "10-50w", "target": 130, "actual": 5, "rate": 3.8}, {"industry": "手工", "tier": "50w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "5-10w", "target": 18, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "10-30w", "target": 8, "actual": 1, "rate": 12.5}, {"industry": "虚拟", "tier": "30-50w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "3w-10w", "target": 776, "actual": 12, "rate": 1.5}, {"industry": "亲子生活", "tier": "10w-30w", "target": 121, "actual": 2, "rate": 1.7}, {"industry": "亲子生活", "tier": "30w+", "target": 13, "actual": 2, "rate": 15.4}, {"industry": "宠物", "tier": "5k-1w", "target": 432, "actual": 14, "rate": 3.2}, {"industry": "宠物", "tier": "1w-3w", "target": 161, "actual": 5, "rate": 3.1}, {"industry": "宠物", "tier": "3w-10w", "target": 17, "actual": 1, "rate": 5.9}, {"industry": "宠物", "tier": "10w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "5-10w", "target": 158, "actual": 7, "rate": 4.4}, {"industry": "大健康", "tier": "10-30w", "target": 77, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "30-50w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "3w-5w", "target": 128, "actual": 2, "rate": 1.6}, {"industry": "家具", "tier": "5-10w", "target": 57, "actual": 3, "rate": 5.3}, {"industry": "家具", "tier": "10-30w", "target": 65, "actual": 2, "rate": 3.1}, {"industry": "家具", "tier": "30-50w", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "50-100w", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "家电", "tier": "3w-5w", "target": 108, "actual": 2, "rate": 1.9}, {"industry": "家电", "tier": "5-10w", "target": 69, "actual": 3, "rate": 4.3}, {"industry": "家电", "tier": "10-30w", "target": 50, "actual": 1, "rate": 2.0}, {"industry": "家电", "tier": "30-50w", "target": 10, "actual": 1, "rate": 10.0}, {"industry": "家电", "tier": "50-100w", "target": 8, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "3-5w", "target": 288, "actual": 5, "rate": 1.7}, {"industry": "消费电子", "tier": "5-10w", "target": 104, "actual": 1, "rate": 1.0}, {"industry": "消费电子", "tier": "10-30w", "target": 38, "actual": 3, "rate": 7.9}, {"industry": "消费电子", "tier": "30-50w", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "50-100w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "100w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "3-5w", "target": 458, "actual": 1, "rate": 0.2}, {"industry": "酒旅", "tier": "5-10w", "target": 423, "actual": 4, "rate": 0.9}, {"industry": "酒旅", "tier": "10-30w", "target": 124, "actual": 2, "rate": 1.6}, {"industry": "酒旅", "tier": "30-50w", "target": 110, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "50-100w", "target": 103, "actual": 2, "rate": 1.9}, {"industry": "酒旅", "tier": "100w+", "target": 102, "actual": 1, "rate": 1.0}, {"industry": "家用", "tier": "3w-10w", "target": 789, "actual": 18, "rate": 2.3}, {"industry": "家用", "tier": "10w-50w", "target": 188, "actual": 3, "rate": 1.6}, {"industry": "家用", "tier": "50w-100w", "target": 22, "actual": 1, "rate": 4.5}, {"industry": "家用", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "5-10w", "target": 78, "actual": 2, "rate": 2.6}, {"industry": "家纺", "tier": "10-30w", "target": 48, "actual": 1, "rate": 2.1}, {"industry": "家纺", "tier": "30-50w", "target": 9, "actual": 1, "rate": 11.1}, {"industry": "家纺", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "5-10w", "target": 71, "actual": 3, "rate": 4.2}, {"industry": "家饰", "tier": "10-30w", "target": 24, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "30-50w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "5-10w", "target": 215, "actual": 4, "rate": 1.9}, {"industry": "二奢", "tier": "10-30w", "target": 168, "actual": 5, "rate": 3.0}, {"industry": "二奢", "tier": "30-50w", "target": 49, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "50-100w", "target": 11, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "休食", "tier": "3w-5w", "target": 245, "actual": 7, "rate": 2.9}, {"industry": "休食", "tier": "5-10w", "target": 101, "actual": 5, "rate": 5.0}, {"industry": "休食", "tier": "10-30w", "target": 77, "actual": 3, "rate": 3.9}, {"industry": "休食", "tier": "30-50w", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "50-100w", "target": 7, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "100w+", "target": 2, "actual": 2, "rate": 100.0}, {"industry": "图书", "tier": "3w-5w", "target": 29, "actual": 2, "rate": 6.9}, {"industry": "图书", "tier": "5-10w", "target": 23, "actual": 2, "rate": 8.7}, {"industry": "图书", "tier": "10-30w", "target": 13, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "3w-5w", "target": 101, "actual": 1, "rate": 1.0}, {"industry": "教育", "tier": "5-10w", "target": 73, "actual": 4, "rate": 5.5}, {"industry": "教育", "tier": "10-30w", "target": 14, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "30-50w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}], "kbo": [{"industry": "文玩玉翠", "tier": "30w+", "target": 38, "actual": 3, "rate": 7.9}, {"industry": "文玩玉翠", "tier": "100w+", "target": 96, "actual": 3, "rate": 3.1}, {"industry": "生鲜", "tier": "1w+", "target": 450, "actual": 16, "rate": 3.6}, {"industry": "生鲜", "tier": "5w+", "target": 38, "actual": 2, "rate": 5.3}, {"industry": "生鲜", "tier": "10w+", "target": 30, "actual": 1, "rate": 3.3}, {"industry": "生鲜", "tier": "50w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "手工", "tier": "1w+", "target": 75, "actual": 6, "rate": 8.0}, {"industry": "手工", "tier": "5w+", "target": 29, "actual": 2, "rate": 6.9}, {"industry": "手工", "tier": "10w+", "target": 16, "actual": 1, "rate": 6.2}, {"industry": "手工", "tier": "50w+", "target": 1, "actual": 1, "rate": 100.0}, {"industry": "手工", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "1w+", "target": 87, "actual": 10, "rate": 11.5}, {"industry": "虚拟", "tier": "5w+", "target": 27, "actual": 3, "rate": 11.1}, {"industry": "虚拟", "tier": "10w+", "target": 13, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "50w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "虚拟", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "亲子生活", "tier": "1w+", "target": 1280, "actual": 44, "rate": 3.4}, {"industry": "亲子生活", "tier": "5w+", "target": 286, "actual": 11, "rate": 3.8}, {"industry": "亲子生活", "tier": "10w+", "target": 148, "actual": 6, "rate": 4.1}, {"industry": "亲子生活", "tier": "50w+", "target": 11, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "100w+", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "5k+", "target": 41, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "1w+", "target": 40, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "5w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "10w+", "target": 5, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "1w+", "target": 216, "actual": 43, "rate": 19.9}, {"industry": "大健康", "tier": "5w+", "target": 85, "actual": 9, "rate": 10.6}, {"industry": "大健康", "tier": "10w+", "target": 71, "actual": 3, "rate": 4.2}, {"industry": "大健康", "tier": "50w+", "target": 30, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "100w+", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "10w+", "target": 93, "actual": 18, "rate": 19.4}, {"industry": "家具", "tier": "50w+", "target": 65, "actual": 3, "rate": 4.6}, {"industry": "家具", "tier": "100w+", "target": 18, "actual": 2, "rate": 11.1}, {"industry": "家电", "tier": "10w+", "target": 78, "actual": 2, "rate": 2.6}, {"industry": "家电", "tier": "50w+", "target": 10, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "10w+", "target": 22, "actual": 4, "rate": 18.2}, {"industry": "消费电子", "tier": "50w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "10w+", "target": 8, "actual": 1, "rate": 12.5}, {"industry": "酒旅", "tier": "50w+", "target": 6, "actual": 1, "rate": 16.7}, {"industry": "酒旅", "tier": "100w+", "target": 11, "actual": 1, "rate": 9.1}, {"industry": "家用", "tier": "10-50w", "target": 110, "actual": 3, "rate": 2.7}, {"industry": "家用", "tier": "50-100w", "target": 10, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "10-50w", "target": 52, "actual": 2, "rate": 3.8}, {"industry": "家纺", "tier": "50-100w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "10-50w", "target": 16, "actual": 1, "rate": 6.2}, {"industry": "家饰", "tier": "50-100w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "100w+", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "1w+", "target": 35, "actual": 1, "rate": 2.9}, {"industry": "二奢", "tier": "5w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "10w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "50w+", "target": 5, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "100w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "1w+", "target": 376, "actual": 21, "rate": 5.6}, {"industry": "休食", "tier": "5w+", "target": 122, "actual": 2, "rate": 1.6}, {"industry": "休食", "tier": "10w+", "target": 133, "actual": 2, "rate": 1.5}, {"industry": "休食", "tier": "50w+", "target": 14, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "100w+", "target": 7, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "5w+", "target": 33, "actual": 4, "rate": 12.1}, {"industry": "图书", "tier": "10w+", "target": 24, "actual": 2, "rate": 8.3}, {"industry": "图书", "tier": "50w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "5w+", "target": 66, "actual": 12, "rate": 18.2}, {"industry": "教育", "tier": "10w+", "target": 64, "actual": 8, "rate": 12.5}, {"industry": "教育", "tier": "50w+", "target": 7, "actual": 3, "rate": 42.9}, {"industry": "教育", "tier": "100w+", "target": 7, "actual": 1, "rate": 14.3}], "update_time": "2026-05-23", "cutoff_date": "2026-05-22"};
 
+// ===== 时间进度计算 =====
+const PROMO_START = new Date('2026-05-22T00:00:00+08:00');
+const PROMO_END   = new Date('2026-06-18T23:59:59+08:00');
+const TOTAL_DAYS  = 28;
+
+function getTimeProgress() {
+  // 数据截止日期（从DATA中读取）
+  const cutoff = new Date(DATA.cutoff_date + 'T23:59:59+08:00');
+  const elapsed = (cutoff - PROMO_START) / (1000 * 60 * 60 * 24) + 1; // 包含当天
+  return Math.min(Math.max(elapsed / TOTAL_DAYS, 0), 1);
+}
+
+const TIME_PROGRESS = getTimeProgress(); // e.g. 1/28 ≈ 0.0357
+const TIME_PCT = Math.round(TIME_PROGRESS * 1000) / 10;
+
+// 初始化时间进度显示
+document.getElementById('time-pct-text').textContent = `第${Math.round(TIME_PROGRESS * TOTAL_DAYS)}天 / ${TOTAL_DAYS}天 (${TIME_PCT}%)`;
+document.getElementById('time-fill').style.width = TIME_PCT + '%';
+document.getElementById('update-time-el').textContent = `⏱ 数据截止 ${DATA.cutoff_date}`;
+document.getElementById('time-label').textContent = `时间进度 5/22～6/18`;
+
+// ===== 工具函数 =====
 function rateClass(r) {
   if (r === 0) return 'rate-zero';
+  if (r > 100) return 'rate-over';
   if (r >= 50) return 'rate-high';
   if (r >= 20) return 'rate-mid';
   return 'rate-low';
 }
-function rateText(r) { return r >= 999 ? '超额' : r + '%'; }
+function rateText(r) {
+  if (r === 0) return '0%';
+  if (r >= 999) return '超额';
+  return r + '%';
+}
 
+// 计算Gap（相对时间进度）
+function calcGap(actual, target) {
+  const expected = Math.round(target * TIME_PROGRESS); // 按时间线应完成
+  return actual - expected;
+}
+
+function vsStatus(actual, target) {
+  if (target === 0) return { cls: 'vs-row-zero', text: '—' };
+  const rate = actual / target;
+  const diff = rate - TIME_PROGRESS;
+  if (diff > 0.02) return { cls: 'vs-row-ahead', text: '▲快' };
+  if (diff < -0.02) return { cls: 'vs-row-behind', text: '▼慢' };
+  return { cls: 'vs-row-on', text: '●准' };
+}
+
+function vsBadge(actual, target) {
+  const vs = vsStatus(actual, target);
+  const map = { 'vs-row-ahead': 'vs-ahead', 'vs-row-behind': 'vs-behind', 'vs-row-on': 'vs-on', 'vs-row-zero': '' };
+  return { cls: map[vs.cls] || '', text: vs.text };
+}
+
+// ===== 行业三部汇总渲染 =====
 function renderDept3(elId, key) {
   const el = document.getElementById(elId);
   const d = DATA.dept3_summary[key];
   const tiers = d.tiers;
   const labels = d.tier_labels;
-  const COLORS = ['#0A84FF','#34C759','#FFD60A','#FF9500','#FF2D55'];
   let html = '';
+
   tiers.forEach((t, i) => {
     const target = d.target[t] || 0;
     const actual = d.actual[t] || 0;
     const rate = target > 0 ? Math.round(actual / target * 1000) / 10 : (actual > 0 ? 999 : 0);
     const pct = target > 0 ? Math.min(actual / target * 100, 100) : (actual > 0 ? 100 : 0);
     const rc = rateClass(rate);
+    const gap = calcGap(actual, target);
+    const vs = vsBadge(actual, target);
+    const timePctPos = Math.min(TIME_PROGRESS * 100, 99.5);
+
     html += `<div class="tier-card t${i}">
       <div class="tier-label">${labels[i]}</div>
-      <div class="tier-type-label">完成 / 目标</div>
       <div class="tier-nums">
         <span class="tier-actual">${actual}</span>
-        <span class="tier-target">/ ${Math.round(target)}</span>
+        <span class="tier-target">/ ${Math.round(target)} 场</span>
       </div>
-      <span class="tier-rate ${rc}">${rateText(rate)}</span>
-      <div class="progress-wrap">
-        <div class="progress-bar">
-          <div class="progress-fill" style="width:${pct}%"></div>
-        </div>
+      <div class="tier-rate-row">
+        <span class="rate-badge ${rc}">${rateText(rate)}</span>
+        ${vs.cls ? `<span class="vs-badge ${vs.cls}">${vs.text} 进度${TIME_PCT}%</span>` : ''}
+      </div>
+      <div class="tier-gap-row">
+        <span class="gap-label">Gap（vs时间进度）</span>
+        <span class="gap-value ${gap >= 0 ? 'gap-pos' : 'gap-neg'}">${gap >= 0 ? '+' : ''}${gap} 场</span>
+      </div>
+      <div class="dual-bar-wrap">
+        <div class="dual-bar-bg"></div>
+        <div class="dual-bar-actual" style="width:${pct}%"></div>
+        <div class="dual-bar-time" style="left:${timePctPos}%"></div>
       </div>
     </div>`;
   });
   el.innerHTML = html;
 }
 
+// ===== 各行业详情渲染 =====
 function renderIndustry(elId, rows) {
   const el = document.getElementById(elId);
   const byInd = {};
   rows.forEach(r => { if (!byInd[r.industry]) byInd[r.industry] = []; byInd[r.industry].push(r); });
+
   let html = '';
   Object.entries(byInd).forEach(([ind, items]) => {
     const tt = items.reduce((s, x) => s + x.target, 0);
     const ta = items.reduce((s, x) => s + x.actual, 0);
     const or = tt > 0 ? Math.round(ta / tt * 1000) / 10 : 0;
-    const rc = rateClass(or);
+    const ogap = calcGap(ta, tt);
+    const ors = vsStatus(ta, tt);
+    const orc = rateClass(or);
+    const timePctPos = Math.min(TIME_PROGRESS * 100, 99);
+
     html += `<div class="industry-card">
       <div class="industry-card-header">
         <div class="industry-name">${ind}</div>
-        <div class="industry-total">合计 ${ta} / ${tt} 场 &nbsp;<span class="rate-pill ${rc}" style="font-size:10px">${rateText(or)}</span></div>
+        <div class="industry-summary">
+          <span class="industry-total">${ta} / ${tt} 场</span>
+          <span class="rate-pill ${orc}">${rateText(or)}</span>
+          <span class="${ors.cls}" style="font-size:11px;">${ors.text}</span>
+          <span style="font-size:11px;font-weight:700;color:${ogap>=0?'var(--green)':'var(--red)'}">Gap${ogap>=0?'+':''}${ogap}</span>
+        </div>
       </div>
       <div class="tier-row-header">
-        <span>层次</span><span>进度</span>
+        <span>层次</span>
+        <span>进度</span>
         <span style="text-align:right">目标</span>
         <span style="text-align:right">完成</span>
         <span style="text-align:right">完成率</span>
+        <span style="text-align:center">vs进度</span>
+        <span style="text-align:right">Gap</span>
       </div>`;
+
     items.forEach(item => {
       const pct = item.target > 0 ? Math.min(item.actual / item.target * 100, 100) : (item.actual > 0 ? 100 : 0);
       const irc = rateClass(item.rate);
-      const color = pct >= 50 ? '#34C759' : pct >= 20 ? '#FF9500' : '#FF2D55';
+      const color = pct >= TIME_PROGRESS * 100 + 2 ? '#34C759' : pct < TIME_PROGRESS * 100 - 2 ? '#FF2D55' : '#FFD60A';
+      const ivs = vsStatus(item.actual, item.target);
+      const igap = calcGap(item.actual, item.target);
       html += `<div class="tier-row">
         <div class="col-tier">${item.tier}</div>
-        <div class="col-bar"><div class="mini-bar"><div class="mini-fill" style="width:${pct}%;background:${color}"></div></div></div>
+        <div class="col-bar">
+          <div class="mini-bar">
+            <div class="mini-fill" style="width:${pct}%;background:${color}"></div>
+            <div class="mini-time-line" style="left:${timePctPos}%"></div>
+          </div>
+        </div>
         <div class="col-target">${item.target}</div>
         <div class="col-actual">${item.actual}</div>
         <div class="col-rate"><span class="rate-pill ${irc}">${rateText(item.rate)}</span></div>
+        <div class="col-vs"><span class="${ivs.cls}">${ivs.text}</span></div>
+        <div class="col-gap" style="color:${igap>=0?'var(--green)':'var(--red)'}">${igap>=0?'+':''}${igap}</div>
       </div>`;
     });
     html += `</div>`;
@@ -313,6 +464,7 @@ function renderIndustry(elId, rows) {
   el.innerHTML = html;
 }
 
+// ===== Tab 切换 =====
 function switchTab(type) {
   document.querySelectorAll('.tab').forEach((t, i) => {
     t.classList.toggle('active', (i===0&&type==='dbo')||(i===1&&type==='kbo'));
@@ -321,6 +473,7 @@ function switchTab(type) {
   document.getElementById('panel-kbo').classList.toggle('active', type==='kbo');
 }
 
+// ===== Init =====
 renderDept3('dept3-dbo', 'dbo');
 renderDept3('dept3-kbo', 'kbo');
 renderIndustry('industry-dbo', DATA.dbo);
