@@ -31,7 +31,6 @@
     min-height: 100vh;
   }
 
-  /* ===== Header ===== */
   .header {
     background: linear-gradient(135deg, #1a0a10 0%, #1a1020 40%, #0d1020 100%);
     border-bottom: 1px solid var(--border);
@@ -42,7 +41,6 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
   }
   .header-left { display: flex; align-items: center; gap: 12px; }
   .header-badge {
@@ -57,260 +55,127 @@
   .header-title { font-size: 16px; font-weight: 600; color: var(--text); }
   .header-sub { font-size: 12px; color: var(--text2); margin-top: 2px; }
   .update-time {
-    font-size: 11px;
-    color: var(--text3);
-    background: var(--surface);
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
+    font-size: 11px; color: var(--text3);
+    background: var(--surface); padding: 4px 10px;
+    border-radius: 20px; border: 1px solid var(--border);
   }
 
-  /* ===== Layout ===== */
   .main { padding: 20px 24px; max-width: 1600px; margin: 0 auto; }
-  
+
   .section-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 14px; font-weight: 700; color: var(--text);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
   }
   .section-title::before {
-    content: '';
-    display: block;
-    width: 3px;
-    height: 16px;
-    border-radius: 2px;
-    background: var(--accent);
+    content: ''; display: block; width: 3px; height: 16px;
+    border-radius: 2px; background: var(--accent);
   }
   .section-badge {
-    font-size: 11px;
-    font-weight: 500;
-    background: rgba(255,45,85,0.15);
-    color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,45,85,0.3);
+    font-size: 11px; font-weight: 500;
+    background: rgba(255,45,85,0.15); color: var(--accent);
+    padding: 2px 8px; border-radius: 10px; border: 1px solid rgba(255,45,85,0.3);
   }
 
-  /* ===== Tab Switcher ===== */
   .tabs {
-    display: flex;
-    gap: 4px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 4px;
-    margin-bottom: 20px;
-    width: fit-content;
+    display: flex; gap: 4px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 4px; margin-bottom: 20px; width: fit-content;
   }
   .tab {
-    padding: 7px 20px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text2);
-    transition: all 0.2s;
-    user-select: none;
+    padding: 7px 20px; border-radius: 7px; cursor: pointer;
+    font-size: 13px; font-weight: 600; color: var(--text2);
+    transition: all 0.2s; user-select: none;
   }
-  .tab.active {
-    background: var(--accent);
-    color: white;
-  }
-  .tab:hover:not(.active) {
-    background: var(--surface2);
-    color: var(--text);
-  }
+  .tab.active { background: var(--accent); color: white; }
+  .tab:hover:not(.active) { background: var(--surface2); color: var(--text); }
 
-  /* ===== Dept3 Summary Cards ===== */
   .dept3-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 12px; margin-bottom: 24px;
   }
   .tier-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px;
+    position: relative; overflow: hidden;
   }
   .tier-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    border-radius: 12px 12px 0 0;
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; border-radius: 12px 12px 0 0;
   }
   .tier-card.t0::before { background: var(--blue); }
   .tier-card.t1::before { background: var(--green); }
   .tier-card.t2::before { background: var(--yellow); }
   .tier-card.t3::before { background: var(--orange); }
   .tier-card.t4::before { background: var(--red); }
-  
-  .tier-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text2);
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-  }
-  .tier-type-label {
-    font-size: 10px;
-    color: var(--text3);
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-  .tier-nums {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-    margin-bottom: 4px;
-  }
+
+  .tier-label { font-size: 12px; font-weight: 600; color: var(--text2); margin-bottom: 4px; }
+  .tier-sublabel { font-size: 10px; color: var(--text3); margin-bottom: 6px; font-style: italic; }
+  .tier-type-label { font-size: 10px; color: var(--text3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .tier-nums { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
   .tier-actual { font-size: 24px; font-weight: 700; color: var(--text); }
   .tier-target { font-size: 13px; color: var(--text3); }
   .tier-rate {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 10px;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 7px; border-radius: 10px;
   }
   .rate-high { background: rgba(52,199,89,0.15); color: var(--green); }
-  .rate-mid { background: rgba(255,149,0,0.15); color: var(--orange); }
-  .rate-low { background: rgba(255,45,85,0.12); color: var(--red); }
-  .rate-zero { background: rgba(90,95,117,0.3); color: var(--text3); }
+  .rate-mid  { background: rgba(255,149,0,0.15); color: var(--orange); }
+  .rate-low  { background: rgba(255,45,85,0.12); color: var(--red); }
+  .rate-zero { background: rgba(90,95,117,0.3);  color: var(--text3); }
 
-  .tier-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin: 8px 0;
-  }
-
-  /* Progress bar */
-  .progress-wrap { margin-top: 6px; }
-  .progress-bar {
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.5s ease;
-  }
+  .progress-wrap { margin-top: 8px; }
+  .progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
   .t0 .progress-fill { background: var(--blue); }
   .t1 .progress-fill { background: var(--green); }
   .t2 .progress-fill { background: var(--yellow); }
   .t3 .progress-fill { background: var(--orange); }
   .t4 .progress-fill { background: var(--red); }
 
-  /* ===== Industry Tables ===== */
-  .industry-section { margin-bottom: 24px; }
   .industry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 12px;
   }
   .industry-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
   }
   .industry-card-header {
-    background: var(--surface2);
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: var(--surface2); padding: 10px 14px;
+    display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--border);
   }
-  .industry-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .industry-total {
-    font-size: 11px;
-    color: var(--text3);
-  }
+  .industry-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .industry-total { font-size: 11px; color: var(--text3); }
+
   .tier-row {
-    display: grid;
-    grid-template-columns: 80px 1fr 60px 60px 70px;
-    gap: 6px;
-    padding: 7px 14px;
-    border-bottom: 1px solid rgba(46,51,71,0.5);
-    align-items: center;
+    display: grid; grid-template-columns: 80px 1fr 60px 60px 70px;
+    gap: 6px; padding: 7px 14px;
+    border-bottom: 1px solid rgba(46,51,71,0.5); align-items: center;
   }
   .tier-row:last-child { border-bottom: none; }
   .tier-row-header {
-    display: grid;
-    grid-template-columns: 80px 1fr 60px 60px 70px;
-    gap: 6px;
-    padding: 5px 14px 5px;
-    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 80px 1fr 60px 60px 70px;
+    gap: 6px; padding: 5px 14px; border-bottom: 1px solid var(--border);
   }
-  .tier-row-header span {
-    font-size: 10px;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    font-weight: 600;
-  }
+  .tier-row-header span { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; }
   .col-tier { font-size: 12px; color: var(--text2); font-weight: 500; }
-  .col-bar { position: relative; }
   .col-target { font-size: 12px; color: var(--text3); text-align: right; }
   .col-actual { font-size: 13px; font-weight: 700; color: var(--text); text-align: right; }
   .col-rate { text-align: right; }
-  .mini-bar {
-    height: 6px;
-    background: var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .mini-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: var(--blue);
-  }
-  .rate-pill {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 8px;
-    display: inline-block;
-  }
+  .mini-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .mini-fill { height: 100%; border-radius: 3px; }
+  .rate-pill { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 8px; display: inline-block; }
 
-  /* ===== Tab panel ===== */
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
-  /* ===== Note ===== */
   .note-bar {
-    background: rgba(10,132,255,0.08);
-    border: 1px solid rgba(10,132,255,0.2);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 11px;
-    color: var(--text2);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.2);
+    border-radius: 8px; padding: 8px 14px; font-size: 11px; color: var(--text2);
+    margin-bottom: 18px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
   }
-  .note-icon { color: var(--blue); font-size: 14px; }
+  .note-icon { color: var(--blue); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
-  /* ===== Responsive ===== */
   @media (max-width: 900px) {
     .dept3-grid { grid-template-columns: repeat(3, 1fr); }
     .industry-grid { grid-template-columns: 1fr; }
@@ -319,8 +184,6 @@
     .dept3-grid { grid-template-columns: repeat(2, 1fr); }
     .main { padding: 14px; }
   }
-
-  /* scrollbar */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -340,87 +203,68 @@
 </div>
 
 <div class="main">
-
-  <!-- Tab Switcher -->
   <div class="tabs">
     <div class="tab active" onclick="switchTab('dbo')">🏪 店播</div>
     <div class="tab" onclick="switchTab('kbo')">📡 K播</div>
   </div>
 
-  <!-- ===== 店播面板 ===== -->
+  <!-- 店播 -->
   <div class="tab-panel active" id="panel-dbo">
-
-    <!-- 行业三部汇总 -->
     <div class="section-title">行业三部汇总 <span class="section-badge">精分目标完成率</span></div>
     <div class="dept3-grid" id="dept3-dbo"></div>
-
     <div class="note-bar">
       <span class="note-icon">ℹ</span>
-      <span>汇总目标为各行业精确GMV区间目标之和（精确映射到对应层次）。完成数据：5月22日之后每场直播按DGMV归层统计。</span>
+      <span>汇总目标按GMV区间归层：<b>5k-3w</b>（5k-1w / 1w-3w）、<b>3w-10w</b>（3-5w / 5-10w / 3w-5w / 3w-10w）、<b>10w-50w</b>（10-30w / 10-50w / 10w+ / 10w-30w / 10w-50w / 15-50w / 30-50w / 30w+）、<b>50w-100w</b>（50-100w / 50w+ / 50w-100w）、<b>100w+</b>。完成数据：5月22日后每场按DGMV归层统计。</span>
     </div>
-
-    <!-- 各行业详情 -->
     <div class="section-title">各行业详情</div>
     <div class="industry-grid" id="industry-dbo"></div>
   </div>
 
-  <!-- ===== K播面板 ===== -->
+  <!-- K播 -->
   <div class="tab-panel" id="panel-kbo">
-
     <div class="section-title">行业三部汇总 <span class="section-badge">精分目标完成率</span></div>
     <div class="dept3-grid" id="dept3-kbo"></div>
-
     <div class="note-bar">
       <span class="note-icon">ℹ</span>
-      <span>K播目标含累积型层次（如1w+）；汇总目标仅含精确区间行（如10-50w）。完成数据：5月22日之后每场按DGMV归层，<b>K播各行分层为累积计数</b>（同一场次可同时满足多个层次阈值）。</span>
+      <span>K播汇总目标按层次归入：<b>5k-5w</b>（5K+ / 1w+）、<b>5w-10w</b>（5W+）、<b>10w-50w</b>（10W+ / 30W+ / 10-50W）、<b>50w-100w</b>（50W+ / 50-100W）、<b>100w+</b>。完成数据：5月22日后每场按DGMV归层，K播各行分层为累积计数。</span>
     </div>
-
     <div class="section-title">各行业详情</div>
     <div class="industry-grid" id="industry-kbo"></div>
   </div>
-
 </div>
 
 <script>
-// ===== 数据 =====
-const DATA = {"dept3_summary": {"tiers": ["5k-3w", "3w-10w", "10w-50w", "50w-100w", "100w+"], "kbo": {"target": {"5k-3w": 0, "3w-10w": 0, "10w-50w": 178.0, "50w-100w": 17.0, "100w+": 187.0}, "actual": {"5k-3w": 0, "3w-10w": 9, "10w-50w": 51, "50w-100w": 3, "100w+": 7}}, "dbo": {"target": {"5k-3w": 593.0, "3w-10w": 5293.0, "10w-50w": 3326.3953488372094, "50w-100w": 353.0, "100w+": 194.0}, "actual": {"5k-3w": 0, "3w-10w": 0, "10w-50w": 29, "50w-100w": 8, "100w+": 6}}}, "dbo": [{"industry": "文玩玉翠", "tier": "15-50w", "target": 1645, "actual": 18, "rate": 1.1}, {"industry": "文玩玉翠", "tier": "50-100w", "target": 169, "actual": 5, "rate": 3.0}, {"industry": "文玩玉翠", "tier": "100w+", "target": 69, "actual": 3, "rate": 4.3}, {"industry": "生鲜", "tier": "3-5w", "target": 149, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "5-10w", "target": 106, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "10-30w", "target": 65, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "5-10w", "target": 389, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "10-50w", "target": 238, "actual": 2, "rate": 0.8}, {"industry": "潮玩", "tier": "50-100w", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "100w+", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "手工", "tier": "5-10w", "target": 320, "actual": 0, "rate": 0.0}, {"industry": "手工", "tier": "10-50w", "target": 130, "actual": 2, "rate": 1.5}, {"industry": "手工", "tier": "50w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "5-10w", "target": 18, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "10-30w", "target": 8, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "30-50w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "3w-10w", "target": 776, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "10w-30w", "target": 121, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "30w+", "target": 13, "actual": 2, "rate": 15.4}, {"industry": "宠物", "tier": "5k-1w", "target": 432, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "1w-3w", "target": 161, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "3w-10w", "target": 17, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "10w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "5-10w", "target": 158, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "10-30w", "target": 77, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "30-50w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "3w-5w", "target": 128, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "5-10w", "target": 57, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "10-30w", "target": 65, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "30-50w", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "50-100w", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "家电", "tier": "3w-5w", "target": 108, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "5-10w", "target": 69, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "10-30w", "target": 50, "actual": 1, "rate": 2.0}, {"industry": "家电", "tier": "30-50w", "target": 10, "actual": 1, "rate": 10.0}, {"industry": "家电", "tier": "50-100w", "target": 8, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "3-5w", "target": 288, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "5-10w", "target": 104, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "10-30w", "target": 38, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "30-50w", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "50-100w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "100w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "3-5w", "target": 458, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "5-10w", "target": 423, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "10-30w", "target": 124, "actual": 1, "rate": 0.8}, {"industry": "酒旅", "tier": "30-50w", "target": 110, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "50-100w", "target": 103, "actual": 2, "rate": 1.9}, {"industry": "酒旅", "tier": "100w+", "target": 102, "actual": 1, "rate": 1.0}, {"industry": "家用", "tier": "3w-10w", "target": 789, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "10w-50w", "target": 188, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "50w-100w", "target": 22, "actual": 1, "rate": 4.5}, {"industry": "家用", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "5-10w", "target": 78, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "10-30w", "target": 48, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "30-50w", "target": 9, "actual": 1, "rate": 11.1}, {"industry": "家纺", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "5-10w", "target": 71, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "10-30w", "target": 24, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "30-50w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "5-10w", "target": 215, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "10-30w", "target": 168, "actual": 1, "rate": 0.6}, {"industry": "二奢", "tier": "30-50w", "target": 49, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "50-100w", "target": 11, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "休食", "tier": "3w-5w", "target": 245, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "5-10w", "target": 101, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "10-30w", "target": 77, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "30-50w", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "50-100w", "target": 7, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "100w+", "target": 2, "actual": 2, "rate": 100.0}, {"industry": "图书", "tier": "3w-5w", "target": 29, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "5-10w", "target": 23, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "10-30w", "target": 13, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "3w-5w", "target": 101, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "5-10w", "target": 73, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "10-30w", "target": 14, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "30-50w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}], "kbo": [{"industry": "文玩玉翠", "tier": "30w+", "target": 38, "actual": 3, "rate": 7.9}, {"industry": "文玩玉翠", "tier": "100w+", "target": 96, "actual": 3, "rate": 3.1}, {"industry": "生鲜", "tier": "1w+", "target": 450, "actual": 1, "rate": 0.2}, {"industry": "生鲜", "tier": "5w+", "target": 38, "actual": 1, "rate": 2.6}, {"industry": "生鲜", "tier": "10w+", "target": 30, "actual": 1, "rate": 3.3}, {"industry": "生鲜", "tier": "50w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "手工", "tier": "1w+", "target": 75, "actual": 1, "rate": 1.3}, {"industry": "手工", "tier": "5w+", "target": 29, "actual": 1, "rate": 3.4}, {"industry": "手工", "tier": "10w+", "target": 16, "actual": 1, "rate": 6.2}, {"industry": "手工", "tier": "50w+", "target": 1, "actual": 1, "rate": 100.0}, {"industry": "手工", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "1w+", "target": 87, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "5w+", "target": 27, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "10w+", "target": 13, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "50w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "虚拟", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "亲子生活", "tier": "1w+", "target": 1280, "actual": 8, "rate": 0.6}, {"industry": "亲子生活", "tier": "5w+", "target": 286, "actual": 8, "rate": 2.8}, {"industry": "亲子生活", "tier": "10w+", "target": 148, "actual": 6, "rate": 4.1}, {"industry": "亲子生活", "tier": "50w+", "target": 11, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "100w+", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "5k+", "target": 41, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "1w+", "target": 40, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "5w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "10w+", "target": 5, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "1w+", "target": 216, "actual": 4, "rate": 1.9}, {"industry": "大健康", "tier": "5w+", "target": 85, "actual": 4, "rate": 4.7}, {"industry": "大健康", "tier": "10w+", "target": 71, "actual": 3, "rate": 4.2}, {"industry": "大健康", "tier": "50w+", "target": 30, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "100w+", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "10w+", "target": 93, "actual": 18, "rate": 19.4}, {"industry": "家具", "tier": "50w+", "target": 65, "actual": 3, "rate": 4.6}, {"industry": "家具", "tier": "100w+", "target": 18, "actual": 2, "rate": 11.1}, {"industry": "家电", "tier": "10w+", "target": 78, "actual": 2, "rate": 2.6}, {"industry": "家电", "tier": "50w+", "target": 10, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "10w+", "target": 22, "actual": 4, "rate": 18.2}, {"industry": "消费电子", "tier": "50w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "10w+", "target": 8, "actual": 1, "rate": 12.5}, {"industry": "酒旅", "tier": "50w+", "target": 6, "actual": 1, "rate": 16.7}, {"industry": "酒旅", "tier": "100w+", "target": 11, "actual": 1, "rate": 9.1}, {"industry": "家用", "tier": "10-50w", "target": 110, "actual": 3, "rate": 2.7}, {"industry": "家用", "tier": "50-100w", "target": 10, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "10-50w", "target": 52, "actual": 2, "rate": 3.8}, {"industry": "家纺", "tier": "50-100w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "10-50w", "target": 16, "actual": 1, "rate": 6.2}, {"industry": "家饰", "tier": "50-100w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "100w+", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "1w+", "target": 35, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "5w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "10w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "50w+", "target": 5, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "100w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "1w+", "target": 376, "actual": 2, "rate": 0.5}, {"industry": "休食", "tier": "5w+", "target": 122, "actual": 2, "rate": 1.6}, {"industry": "休食", "tier": "10w+", "target": 133, "actual": 2, "rate": 1.5}, {"industry": "休食", "tier": "50w+", "target": 14, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "100w+", "target": 7, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "5w+", "target": 33, "actual": 2, "rate": 6.1}, {"industry": "图书", "tier": "10w+", "target": 24, "actual": 2, "rate": 8.3}, {"industry": "图书", "tier": "50w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "5w+", "target": 66, "actual": 10, "rate": 15.2}, {"industry": "教育", "tier": "10w+", "target": 64, "actual": 8, "rate": 12.5}, {"industry": "教育", "tier": "50w+", "target": 7, "actual": 2, "rate": 28.6}, {"industry": "教育", "tier": "100w+", "target": 7, "actual": 1, "rate": 14.3}], "update_time": "2026-05-23", "cutoff_date": "2026-05-22"};
+const DATA = {"dept3_summary": {"kbo": {"tiers": ["5k-5w", "5w-10w", "10w-50w", "50w-100w", "100w+"], "tier_labels": ["5k～5万", "5万～10万", "10万～50万", "50万～100万", "100万+"], "target": {"5k-5w": 2600.0, "5w-10w": 690.0, "10w-50w": 924.0, "50w-100w": 173.0, "100w+": 187.0}, "actual": {"5k-5w": 0, "5w-10w": 9, "10w-50w": 51, "50w-100w": 3, "100w+": 7}}, "dbo": {"tiers": ["5k-3w", "3w-10w", "10w-50w", "50w-100w", "100w+"], "tier_labels": ["5k～3万", "3万～10万", "10万～50万", "50万～100万", "100万+"], "target": {"5k-3w": 593.0, "3w-10w": 5293.0, "10w-50w": 3326.3953488372094, "50w-100w": 353.0, "100w+": 194.0}, "actual": {"5k-3w": 0, "3w-10w": 0, "10w-50w": 29, "50w-100w": 8, "100w+": 6}}}, "dbo": [{"industry": "文玩玉翠", "tier": "15-50w", "target": 1645, "actual": 18, "rate": 1.1}, {"industry": "文玩玉翠", "tier": "50-100w", "target": 169, "actual": 5, "rate": 3.0}, {"industry": "文玩玉翠", "tier": "100w+", "target": 69, "actual": 3, "rate": 4.3}, {"industry": "生鲜", "tier": "3-5w", "target": 149, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "5-10w", "target": 106, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "10-30w", "target": 65, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "5-10w", "target": 389, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "10-50w", "target": 238, "actual": 2, "rate": 0.8}, {"industry": "潮玩", "tier": "50-100w", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "潮玩", "tier": "100w+", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "手工", "tier": "5-10w", "target": 320, "actual": 0, "rate": 0.0}, {"industry": "手工", "tier": "10-50w", "target": 130, "actual": 2, "rate": 1.5}, {"industry": "手工", "tier": "50w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "5-10w", "target": 18, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "10-30w", "target": 8, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "30-50w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "3w-10w", "target": 776, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "10w-30w", "target": 121, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "30w+", "target": 13, "actual": 2, "rate": 15.4}, {"industry": "宠物", "tier": "5k-1w", "target": 432, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "1w-3w", "target": 161, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "3w-10w", "target": 17, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "10w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "5-10w", "target": 158, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "10-30w", "target": 77, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "30-50w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "3w-5w", "target": 128, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "5-10w", "target": 57, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "10-30w", "target": 65, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "30-50w", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "50-100w", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "家电", "tier": "3w-5w", "target": 108, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "5-10w", "target": 69, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "10-30w", "target": 50, "actual": 1, "rate": 2.0}, {"industry": "家电", "tier": "30-50w", "target": 10, "actual": 1, "rate": 10.0}, {"industry": "家电", "tier": "50-100w", "target": 8, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "3-5w", "target": 288, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "5-10w", "target": 104, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "10-30w", "target": 38, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "30-50w", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "50-100w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "100w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "3-5w", "target": 458, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "5-10w", "target": 423, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "10-30w", "target": 124, "actual": 1, "rate": 0.8}, {"industry": "酒旅", "tier": "30-50w", "target": 110, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "50-100w", "target": 103, "actual": 2, "rate": 1.9}, {"industry": "酒旅", "tier": "100w+", "target": 102, "actual": 1, "rate": 1.0}, {"industry": "家用", "tier": "3w-10w", "target": 789, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "10w-50w", "target": 188, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "50w-100w", "target": 22, "actual": 1, "rate": 4.5}, {"industry": "家用", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "5-10w", "target": 78, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "10-30w", "target": 48, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "30-50w", "target": 9, "actual": 1, "rate": 11.1}, {"industry": "家纺", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "5-10w", "target": 71, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "10-30w", "target": 24, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "30-50w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "5-10w", "target": 215, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "10-30w", "target": 168, "actual": 1, "rate": 0.6}, {"industry": "二奢", "tier": "30-50w", "target": 49, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "50-100w", "target": 11, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "休食", "tier": "3w-5w", "target": 245, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "5-10w", "target": 101, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "10-30w", "target": 77, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "30-50w", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "50-100w", "target": 7, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "100w+", "target": 2, "actual": 2, "rate": 100.0}, {"industry": "图书", "tier": "3w-5w", "target": 29, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "5-10w", "target": 23, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "10-30w", "target": 13, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "3w-5w", "target": 101, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "5-10w", "target": 73, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "10-30w", "target": 14, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "30-50w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "50-100w", "target": 1, "actual": 0, "rate": 0.0}], "kbo": [{"industry": "文玩玉翠", "tier": "30w+", "target": 38, "actual": 3, "rate": 7.9}, {"industry": "文玩玉翠", "tier": "100w+", "target": 96, "actual": 3, "rate": 3.1}, {"industry": "生鲜", "tier": "1w+", "target": 450, "actual": 1, "rate": 0.2}, {"industry": "生鲜", "tier": "5w+", "target": 38, "actual": 1, "rate": 2.6}, {"industry": "生鲜", "tier": "10w+", "target": 30, "actual": 1, "rate": 3.3}, {"industry": "生鲜", "tier": "50w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "生鲜", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "手工", "tier": "1w+", "target": 75, "actual": 1, "rate": 1.3}, {"industry": "手工", "tier": "5w+", "target": 29, "actual": 1, "rate": 3.4}, {"industry": "手工", "tier": "10w+", "target": 16, "actual": 1, "rate": 6.2}, {"industry": "手工", "tier": "50w+", "target": 1, "actual": 1, "rate": 100.0}, {"industry": "手工", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "1w+", "target": 87, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "5w+", "target": 27, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "10w+", "target": 13, "actual": 0, "rate": 0.0}, {"industry": "虚拟", "tier": "50w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "虚拟", "tier": "100w+", "target": 0, "actual": 0, "rate": 0}, {"industry": "亲子生活", "tier": "1w+", "target": 1280, "actual": 8, "rate": 0.6}, {"industry": "亲子生活", "tier": "5w+", "target": 286, "actual": 8, "rate": 2.8}, {"industry": "亲子生活", "tier": "10w+", "target": 148, "actual": 6, "rate": 4.1}, {"industry": "亲子生活", "tier": "50w+", "target": 11, "actual": 0, "rate": 0.0}, {"industry": "亲子生活", "tier": "100w+", "target": 9, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "5k+", "target": 41, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "1w+", "target": 40, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "5w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "宠物", "tier": "10w+", "target": 5, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "1w+", "target": 216, "actual": 4, "rate": 1.9}, {"industry": "大健康", "tier": "5w+", "target": 85, "actual": 4, "rate": 4.7}, {"industry": "大健康", "tier": "10w+", "target": 71, "actual": 3, "rate": 4.2}, {"industry": "大健康", "tier": "50w+", "target": 30, "actual": 0, "rate": 0.0}, {"industry": "大健康", "tier": "100w+", "target": 12, "actual": 0, "rate": 0.0}, {"industry": "家具", "tier": "10w+", "target": 93, "actual": 18, "rate": 19.4}, {"industry": "家具", "tier": "50w+", "target": 65, "actual": 3, "rate": 4.6}, {"industry": "家具", "tier": "100w+", "target": 18, "actual": 2, "rate": 11.1}, {"industry": "家电", "tier": "10w+", "target": 78, "actual": 2, "rate": 2.6}, {"industry": "家电", "tier": "50w+", "target": 10, "actual": 0, "rate": 0.0}, {"industry": "家电", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "10w+", "target": 22, "actual": 4, "rate": 18.2}, {"industry": "消费电子", "tier": "50w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "消费电子", "tier": "100w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "酒旅", "tier": "10w+", "target": 8, "actual": 1, "rate": 12.5}, {"industry": "酒旅", "tier": "50w+", "target": 6, "actual": 1, "rate": 16.7}, {"industry": "酒旅", "tier": "100w+", "target": 11, "actual": 1, "rate": 9.1}, {"industry": "家用", "tier": "10-50w", "target": 110, "actual": 3, "rate": 2.7}, {"industry": "家用", "tier": "50-100w", "target": 10, "actual": 0, "rate": 0.0}, {"industry": "家用", "tier": "100w+", "target": 6, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "10-50w", "target": 52, "actual": 2, "rate": 3.8}, {"industry": "家纺", "tier": "50-100w", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "家纺", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "10-50w", "target": 16, "actual": 1, "rate": 6.2}, {"industry": "家饰", "tier": "50-100w", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "家饰", "tier": "100w+", "target": 4, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "1w+", "target": 35, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "5w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "10w+", "target": 3, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "50w+", "target": 5, "actual": 0, "rate": 0.0}, {"industry": "二奢", "tier": "100w+", "target": 1, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "1w+", "target": 376, "actual": 2, "rate": 0.5}, {"industry": "休食", "tier": "5w+", "target": 122, "actual": 2, "rate": 1.6}, {"industry": "休食", "tier": "10w+", "target": 133, "actual": 2, "rate": 1.5}, {"industry": "休食", "tier": "50w+", "target": 14, "actual": 0, "rate": 0.0}, {"industry": "休食", "tier": "100w+", "target": 7, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "5w+", "target": 33, "actual": 2, "rate": 6.1}, {"industry": "图书", "tier": "10w+", "target": 24, "actual": 2, "rate": 8.3}, {"industry": "图书", "tier": "50w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "图书", "tier": "100w+", "target": 2, "actual": 0, "rate": 0.0}, {"industry": "教育", "tier": "5w+", "target": 66, "actual": 10, "rate": 15.2}, {"industry": "教育", "tier": "10w+", "target": 64, "actual": 8, "rate": 12.5}, {"industry": "教育", "tier": "50w+", "target": 7, "actual": 2, "rate": 28.6}, {"industry": "教育", "tier": "100w+", "target": 7, "actual": 1, "rate": 14.3}], "update_time": "2026-05-23", "cutoff_date": "2026-05-22"};
 
-const TIER_COLORS = ['#0A84FF','#34C759','#FFD60A','#FF9500','#FF2D55'];
-const TIERS = ['5k-3w','3w-10w','10w-50w','50w-100w','100w+'];
-const TIER_LABELS = ['5k～3万','3万～10万','10万～50万','50万～100万','100万+'];
-
-function rateClass(rate) {
-  if (rate === 0) return 'rate-zero';
-  if (rate >= 50) return 'rate-high';
-  if (rate >= 20) return 'rate-mid';
+function rateClass(r) {
+  if (r === 0) return 'rate-zero';
+  if (r >= 50) return 'rate-high';
+  if (r >= 20) return 'rate-mid';
   return 'rate-low';
 }
+function rateText(r) { return r >= 999 ? '超额' : r + '%'; }
 
-function rateText(rate) {
-  if (rate === 0) return '0%';
-  return rate + '%';
-}
-
-// ===== 行业三部汇总 =====
 function renderDept3(elId, key) {
   const el = document.getElementById(elId);
   const d = DATA.dept3_summary[key];
+  const tiers = d.tiers;
+  const labels = d.tier_labels;
+  const COLORS = ['#0A84FF','#34C759','#FFD60A','#FF9500','#FF2D55'];
   let html = '';
-  TIERS.forEach((t, i) => {
+  tiers.forEach((t, i) => {
     const target = d.target[t] || 0;
     const actual = d.actual[t] || 0;
     const rate = target > 0 ? Math.round(actual / target * 1000) / 10 : (actual > 0 ? 999 : 0);
     const pct = target > 0 ? Math.min(actual / target * 100, 100) : (actual > 0 ? 100 : 0);
     const rc = rateClass(rate);
-    html += `
-    <div class="tier-card t${i}">
-      <div class="tier-label">${TIER_LABELS[i]}</div>
+    html += `<div class="tier-card t${i}">
+      <div class="tier-label">${labels[i]}</div>
       <div class="tier-type-label">完成 / 目标</div>
       <div class="tier-nums">
         <span class="tier-actual">${actual}</span>
         <span class="tier-target">/ ${Math.round(target)}</span>
       </div>
-      <span class="tier-rate ${rc}">${rate >= 999 ? '超额' : rateText(rate)}</span>
+      <span class="tier-rate ${rc}">${rateText(rate)}</span>
       <div class="progress-wrap">
         <div class="progress-bar">
           <div class="progress-fill" style="width:${pct}%"></div>
@@ -431,51 +275,37 @@ function renderDept3(elId, key) {
   el.innerHTML = html;
 }
 
-// ===== 各行业详情 =====
 function renderIndustry(elId, rows) {
   const el = document.getElementById(elId);
-  
-  // 按行业分组
-  const byIndustry = {};
-  rows.forEach(r => {
-    if (!byIndustry[r.industry]) byIndustry[r.industry] = [];
-    byIndustry[r.industry].push(r);
-  });
-
+  const byInd = {};
+  rows.forEach(r => { if (!byInd[r.industry]) byInd[r.industry] = []; byInd[r.industry].push(r); });
   let html = '';
-  Object.entries(byIndustry).forEach(([ind, items]) => {
-    const totalTarget = items.reduce((s, x) => s + x.target, 0);
-    const totalActual = items.reduce((s, x) => s + x.actual, 0);
-    const overallRate = totalTarget > 0 ? Math.round(totalActual / totalTarget * 1000) / 10 : 0;
-    const maxTarget = Math.max(...items.map(x => x.target));
-
+  Object.entries(byInd).forEach(([ind, items]) => {
+    const tt = items.reduce((s, x) => s + x.target, 0);
+    const ta = items.reduce((s, x) => s + x.actual, 0);
+    const or = tt > 0 ? Math.round(ta / tt * 1000) / 10 : 0;
+    const rc = rateClass(or);
     html += `<div class="industry-card">
       <div class="industry-card-header">
         <div class="industry-name">${ind}</div>
-        <div class="industry-total">合计 ${totalActual} / ${totalTarget} 场 · <span class="${rateClass(overallRate)}" style="font-size:11px;font-weight:700;">${rateText(overallRate)}</span></div>
+        <div class="industry-total">合计 ${ta} / ${tt} 场 &nbsp;<span class="rate-pill ${rc}" style="font-size:10px">${rateText(or)}</span></div>
       </div>
       <div class="tier-row-header">
-        <span>层次</span>
-        <span>进度</span>
+        <span>层次</span><span>进度</span>
         <span style="text-align:right">目标</span>
         <span style="text-align:right">完成</span>
         <span style="text-align:right">完成率</span>
       </div>`;
-    
     items.forEach(item => {
       const pct = item.target > 0 ? Math.min(item.actual / item.target * 100, 100) : (item.actual > 0 ? 100 : 0);
-      const rc = rateClass(item.rate);
+      const irc = rateClass(item.rate);
       const color = pct >= 50 ? '#34C759' : pct >= 20 ? '#FF9500' : '#FF2D55';
       html += `<div class="tier-row">
         <div class="col-tier">${item.tier}</div>
-        <div class="col-bar">
-          <div class="mini-bar">
-            <div class="mini-fill" style="width:${pct}%;background:${color}"></div>
-          </div>
-        </div>
+        <div class="col-bar"><div class="mini-bar"><div class="mini-fill" style="width:${pct}%;background:${color}"></div></div></div>
         <div class="col-target">${item.target}</div>
         <div class="col-actual">${item.actual}</div>
-        <div class="col-rate"><span class="rate-pill ${rc}">${rateText(item.rate)}</span></div>
+        <div class="col-rate"><span class="rate-pill ${irc}">${rateText(item.rate)}</span></div>
       </div>`;
     });
     html += `</div>`;
@@ -483,21 +313,18 @@ function renderIndustry(elId, rows) {
   el.innerHTML = html;
 }
 
-// ===== Tab 切换 =====
 function switchTab(type) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    t.classList.toggle('active', (i === 0 && type === 'dbo') || (i === 1 && type === 'kbo'));
+    t.classList.toggle('active', (i===0&&type==='dbo')||(i===1&&type==='kbo'));
   });
-  document.getElementById('panel-dbo').classList.toggle('active', type === 'dbo');
-  document.getElementById('panel-kbo').classList.toggle('active', type === 'kbo');
+  document.getElementById('panel-dbo').classList.toggle('active', type==='dbo');
+  document.getElementById('panel-kbo').classList.toggle('active', type==='kbo');
 }
 
-// ===== 初始化 =====
 renderDept3('dept3-dbo', 'dbo');
 renderDept3('dept3-kbo', 'kbo');
 renderIndustry('industry-dbo', DATA.dbo);
 renderIndustry('industry-kbo', DATA.kbo);
 </script>
-
 </body>
 </html>
