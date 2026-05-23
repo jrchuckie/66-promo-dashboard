@@ -349,9 +349,8 @@ function vsStatus(actual, target) {
   if (target === 0) return { cls: 'vs-row-zero', text: '—' };
   const rate = actual / target;
   const diff = rate - TIME_PROGRESS;
-  if (diff > 0.02) return { cls: 'vs-row-ahead', text: '▲快' };
-  if (diff < -0.02) return { cls: 'vs-row-behind', text: '▼慢' };
-  return { cls: 'vs-row-on', text: '●准' };
+  if (diff > 0) return { cls: 'vs-row-ahead', text: '▲快' };
+  return { cls: 'vs-row-behind', text: '▼慢' };
 }
 
 function vsBadge(actual, target) {
@@ -389,8 +388,8 @@ function renderDept3(elId, key) {
         ${vs.cls ? `<span class="vs-badge ${vs.cls}">${vs.text} 进度${TIME_PCT}%</span>` : ''}
       </div>
       <div class="tier-gap-row">
-        <span class="gap-label">Gap（vs时间进度）</span>
-        <span class="gap-value ${gap >= 0 ? 'gap-pos' : 'gap-neg'}">${gap >= 0 ? '+' : ''}${gap} 场</span>
+        <span class="gap-label">vs 时间进度</span>
+        <span class="gap-value ${gap >= 0 ? 'gap-pos' : 'gap-neg'}">${gap >= 0 ? '▲ 快 ' + gap + ' 场' : '▼ 慢 ' + Math.abs(gap) + ' 场'}</span>
       </div>
       <div class="dual-bar-wrap">
         <div class="dual-bar-bg"></div>
