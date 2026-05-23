@@ -182,13 +182,11 @@
     border-bottom: 1px solid var(--border);
   }
   .industry-name { font-size: 13px; font-weight: 700; }
-  .industry-summary { display: flex; align-items: center; gap: 6px; font-size: 11px; }
-  .industry-total { color: var(--text3); }
 
   /* 行表头 */
   .tier-row-header {
     display: grid;
-    grid-template-columns: 72px 1fr 50px 50px 62px 90px 70px;
+    grid-template-columns: 72px 50px 50px 62px 80px;
     gap: 4px; padding: 5px 14px; border-bottom: 1px solid var(--border);
   }
   .tier-row-header span { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
@@ -196,26 +194,35 @@
   /* 数据行 */
   .tier-row {
     display: grid;
-    grid-template-columns: 72px 1fr 50px 50px 62px 90px 70px;
-    gap: 4px; padding: 7px 14px;
-    border-bottom: 1px solid rgba(46,51,71,0.4); align-items: center;
+    grid-template-columns: 72px 50px 50px 62px 80px;
+    gap: 4px; padding: 6px 14px 4px;
+    border-bottom: 1px solid rgba(46,51,71,0.4);
   }
   .tier-row:last-child { border-bottom: none; }
 
-  .col-tier { font-size: 11px; color: var(--text2); font-weight: 500; }
-  .col-bar { }
-  .col-target { font-size: 12px; color: var(--text3); text-align: right; }
-  .col-actual { font-size: 13px; font-weight: 700; text-align: right; }
-  .col-rate { text-align: right; }
-  .col-vs { text-align: center; }
-  .col-gap { font-size: 11px; font-weight: 700; text-align: right; }
-
-  .mini-bar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; position: relative; }
-  .mini-fill { height: 100%; border-radius: 3px; }
-  .mini-time-line {
-    position: absolute; top: -1px; width: 1.5px; height: 7px;
-    background: rgba(255,213,10,0.8); border-radius: 1px;
+  /* 每个层次下面的进度轴 */
+  .tier-axis-row {
+    padding: 0 14px 6px;
+    border-bottom: 1px solid rgba(46,51,71,0.4);
   }
+  .tier-axis-row:last-child { border-bottom: none; }
+
+  .col-tier { font-size: 11px; color: var(--text2); font-weight: 500; align-self: center; }
+  .col-target { font-size: 12px; color: var(--text3); text-align: right; align-self: center; }
+  .col-actual { font-size: 13px; font-weight: 700; text-align: right; align-self: center; }
+  .col-rate { text-align: right; align-self: center; }
+  .col-vs { text-align: right; align-self: center; }
+
+  /* 进度轴（每层次下方）*/
+  .axis-wrap { position: relative; height: 12px; }
+  .axis-bg { position: absolute; top: 4px; left: 0; right: 0; height: 4px; background: var(--border); border-radius: 2px; }
+  .axis-fill { position: absolute; top: 4px; left: 0; height: 4px; border-radius: 2px; }
+  .axis-time {
+    position: absolute; top: 1px; width: 2px; height: 10px;
+    background: var(--yellow); border-radius: 1px;
+  }
+  .axis-label-left  { position: absolute; top: 0; left: 0; font-size: 9px; color: var(--text3); line-height: 1; }
+  .axis-label-right { position: absolute; top: 0; right: 0; font-size: 9px; color: var(--text3); line-height: 1; }
 
   .rate-pill { font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 6px; display: inline-block; }
   .rate-high  { background: rgba(52,199,89,0.15);  color: var(--green); }
@@ -407,55 +414,45 @@ function renderIndustry(elId, rows) {
   const byInd = {};
   rows.forEach(r => { if (!byInd[r.industry]) byInd[r.industry] = []; byInd[r.industry].push(r); });
 
+  const timePctPos = Math.min(TIME_PROGRESS * 100, 99);
+
   let html = '';
   Object.entries(byInd).forEach(([ind, items]) => {
-    const tt = items.reduce((s, x) => s + x.target, 0);
-    const ta = items.reduce((s, x) => s + x.actual, 0);
-    const or = tt > 0 ? Math.round(ta / tt * 1000) / 10 : 0;
-    const ogap = calcGap(ta, tt);
-    const ors = vsStatus(ta, tt);
-    const orc = rateClass(or);
-    const timePctPos = Math.min(TIME_PROGRESS * 100, 99);
-
     html += `<div class="industry-card">
       <div class="industry-card-header">
         <div class="industry-name">${ind}</div>
-        <div class="industry-summary">
-          <span class="industry-total">${ta} / ${tt} 场</span>
-          <span class="rate-pill ${orc}">${rateText(or)}</span>
-          <span class="${ors.cls}" style="font-size:11px;">${ors.text}</span>
-          <span style="font-size:11px;font-weight:700;color:${ogap>=0?'var(--green)':'var(--red)'}">Gap${ogap>=0?'+':''}${ogap}</span>
-        </div>
       </div>
       <div class="tier-row-header">
         <span>层次</span>
-        <span>进度</span>
         <span style="text-align:right">目标</span>
         <span style="text-align:right">完成</span>
         <span style="text-align:right">完成率</span>
-        <span style="text-align:center">vs进度</span>
-        <span style="text-align:right">Gap</span>
+        <span style="text-align:right">VS进度</span>
       </div>`;
 
     items.forEach(item => {
       const pct = item.target > 0 ? Math.min(item.actual / item.target * 100, 100) : (item.actual > 0 ? 100 : 0);
       const irc = rateClass(item.rate);
-      const color = pct >= TIME_PROGRESS * 100 + 2 ? '#34C759' : pct < TIME_PROGRESS * 100 - 2 ? '#FF2D55' : '#FFD60A';
       const ivs = vsStatus(item.actual, item.target);
       const igap = calcGap(item.actual, item.target);
+      const fillColor = ivs.cls === 'vs-row-ahead' ? '#34C759' : '#FF2D55';
+      const vsText = igap >= 0
+        ? `<span class="vs-row-ahead">▲快 ${igap}场</span>`
+        : `<span class="vs-row-behind">▼慢 ${Math.abs(igap)}场</span>`;
+
       html += `<div class="tier-row">
         <div class="col-tier">${item.tier}</div>
-        <div class="col-bar">
-          <div class="mini-bar">
-            <div class="mini-fill" style="width:${pct}%;background:${color}"></div>
-            <div class="mini-time-line" style="left:${timePctPos}%"></div>
-          </div>
-        </div>
         <div class="col-target">${item.target}</div>
         <div class="col-actual">${item.actual}</div>
         <div class="col-rate"><span class="rate-pill ${irc}">${rateText(item.rate)}</span></div>
-        <div class="col-vs"><span class="${ivs.cls}">${ivs.text}</span></div>
-        <div class="col-gap" style="color:${igap>=0?'var(--green)':'var(--red)'}">${igap>=0?'+':''}${igap}</div>
+        <div class="col-vs">${item.target > 0 ? vsText : '<span style="color:var(--text3)">—</span>'}</div>
+      </div>
+      <div class="tier-axis-row">
+        <div class="axis-wrap">
+          <div class="axis-bg"></div>
+          <div class="axis-fill" style="width:${pct}%;background:${fillColor}"></div>
+          <div class="axis-time" style="left:${timePctPos}%"></div>
+        </div>
       </div>`;
     });
     html += `</div>`;
